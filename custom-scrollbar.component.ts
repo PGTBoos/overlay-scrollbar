@@ -47,7 +47,7 @@
  </custom-scrollbar>
  </div>
 
- REAL-WORLD EXAMPLE (like your sidenav):
+ REAL-WORLD EXAMPLE :
  <nav style="height: calc(100vh - 51px);">
  <custom-scrollbar [scrollbarWidth]="6">
  <ng-container *ngFor="let item of items">
