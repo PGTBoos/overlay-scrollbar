@@ -1,0 +1,78 @@
+/* custom-scrollbar.component.css */
+.os-host {
+  position: relative;
+  overflow: hidden; /* This hides the part of the viewport with the native scrollbar */
+  width: 100%;  /* Use full width of parent */
+  height: 100%; /* Use full height of parent */
+}
+
+.os-viewport {
+  /* The key trick: Push the native scrollbar outside the host's visible area */
+  width: calc(100% + 20px); /* Push native scrollbar outside visible area */
+  height: calc(100% + 20px);
+  overflow: scroll;
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  /* iOS specific fixes */
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.os-viewport::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.os-content {
+  /* Add any necessary padding or styles for your content */
+  padding-right: 12px; /* Add some padding to prevent content from being too close to scrollbar */
+}
+
+/* --- Custom Scrollbar Styles - Green Theme --- */
+.os-scrollbar-track {
+  position: absolute;
+  top: 0;
+  right: 2px; /* Small offset from the edge */
+  width: 8px;
+  height: 100%;
+  background: rgba(34, 197, 94, 0.15); /* //info gets overwritten by the ts file depending on theme (it happens there, not here!!) */
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  pointer-events: auto; /* Ensure track can receive clicks */
+  z-index: 10; /* Make sure it's above other content */
+}
+
+.os-scrollbar-track:hover {
+  background: rgba(34, 197, 94, 0.25); /* Slightly more visible on hover */
+}
+
+.os-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #137b13 !important; /* Your preferred green */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 11; /* Above the track */
+  min-height: 50px; /* Larger minimum for mobile visibility */
+}
+
+.os-scrollbar-thumb:hover {
+  background: #009a00; /* Darker green on hover */
+  transform: scaleX(1.2); /* Slightly wider on hover */
+}
+
+.os-scrollbar-thumb:active {
+  background: rgba(20, 83, 45, 0.95); /* Even darker when dragging */
+}
+
+/* Optional: Add a subtle glow effect */
+.os-scrollbar-thumb:hover {
+  box-shadow: 0 0 8px rgb(0, 255, 91);
+}
