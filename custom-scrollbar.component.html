@@ -1,0 +1,19 @@
+<div class="os-host">
+  <div #viewport class="os-viewport" (scroll)="onContentScroll()">
+    <div class="os-content">
+      <div style="padding-right: 18px;">
+      <ng-content>
+
+
+        <!-- the  parent content goes here -->
+
+
+      </ng-content>
+<br />      <!-- this helps for apple devices to scroll -->
+      </div>
+    </div>
+  </div>
+  <div class="os-scrollbar-track" (click)="onTrackClick($event)">
+    <div #thumb class="os-scrollbar-thumb" style="transform: translateY(0);"></div>
+  </div>
+</div>
